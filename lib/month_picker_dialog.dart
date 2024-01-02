@@ -98,6 +98,8 @@ Future<DateTime?> showMonthPicker({
   String? monthLocaleString,
   TextStyle? headerTextStyle,
   TextStyle? contentTextStyle,
+  bool? fittedButton,
+  bool showDivider = true,
 }) async {
   assert(forceSelectedDate == dismissible || !forceSelectedDate,
       'forceSelectedDate can only be used with dismissible = true');
@@ -134,6 +136,7 @@ Future<DateTime?> showMonthPicker({
     monthLocaleString: monthLocaleString,
     headerTextStyle: headerTextStyle,
     contentTextStyle: contentTextStyle,
+    showDivider: showDivider,
   );
   final DateTime? dialogDate = await showDialog<DateTime>(
     context: context,
@@ -226,6 +229,12 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
             theme: widget.controller.theme,
             controller: widget.controller,
           ),
+          if (widget.controller.showDivider)
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              thickness: 0.3,
+            ),
           PickerButtonBar(
             controller: widget.controller,
           ),
@@ -250,9 +259,17 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
         child: Builder(
           builder: (BuildContext context) {
             if (portrait) {
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[header, content],
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    widget.controller.roundedCornersRadius,
+                  ),
+                  color: widget.controller.backgroundColor,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[header, content],
+                ),
               );
             }
             return IntrinsicHeight(

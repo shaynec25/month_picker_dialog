@@ -39,6 +39,8 @@ class MonthpickerController {
     this.monthLocaleString,
     this.headerTextStyle,
     this.contentTextStyle,
+    this.fittedButtonColor = true,
+    this.showDivider = true,
   });
 
   //User defined variables
@@ -52,7 +54,9 @@ class MonthpickerController {
       yearFirst,
       forceSelectedDate,
       hideHeaderRow,
-      useMaterial3;
+      useMaterial3,
+      fittedButtonColor,
+      showDivider;
   final Color? headerColor,
       headerTextColor,
       selectedMonthBackgroundColor,
