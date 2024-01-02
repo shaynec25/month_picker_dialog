@@ -20,21 +20,27 @@ class YearGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final String localeString = yearLocaleString ??
         getLocale(context, selectedLocale: controller.locale);
-    return GridView.count(
-      physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.all(8.0),
-      crossAxisCount: 4,
-      children: List<Widget>.generate(
-        12,
-        (final int index) => YearButton(
-          theme: controller.theme,
-          controller: controller,
-          page: page,
-          index: index,
-          onYearSelected: onYearSelected,
-          localeString: localeString,
-        ),
-      ).toList(growable: false),
+    return Center(
+      child: GridView.count(
+        shrinkWrap: true,
+        childAspectRatio: 2,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        physics: const NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        crossAxisCount: 3,
+        children: List<Widget>.generate(
+          9,
+          (final int index) => YearButton(
+            theme: controller.theme,
+            controller: controller,
+            page: page,
+            index: index,
+            onYearSelected: onYearSelected,
+            localeString: localeString,
+          ),
+        ).toList(growable: false),
+      ),
     );
   }
 }

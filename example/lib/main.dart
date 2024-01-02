@@ -74,6 +74,13 @@ class _MyAppState extends State<MyApp> {
           builder: (BuildContext context) => FloatingActionButton(
             onPressed: () {
               showMonthPicker(
+                      // selectedMonthPadding: 10,
+                      headerTextStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.0,
+                      ),
+                      headerColor: Colors.white,
+                      backgroundColor: Colors.white,
                       context: context,
                       firstDate: DateTime(DateTime.now().year - 5, 5),
                       lastDate: DateTime(DateTime.now().year + 8, 9),
@@ -106,7 +113,7 @@ class _MyAppState extends State<MyApp> {
                       // },
                       // headerColor: Colors.amber[900],
                       // headerTextColor: Colors.black,
-                      selectedMonthBackgroundColor: Colors.amber[900],
+                      // selectedMonthBackgroundColor: Colors.amber[900],
                       selectedMonthTextColor: Colors.white,
                       unselectedMonthTextColor: Colors.black,
                       confirmWidget: Text(

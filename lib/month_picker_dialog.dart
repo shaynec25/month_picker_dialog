@@ -77,7 +77,6 @@ Future<DateTime?> showMonthPicker({
   ButtonStyle? Function(int)? yearStylePredicate,
   bool capitalizeFirstLetter = true,
   Color? headerColor,
-  Color? headerTextColor,
   Color? selectedMonthBackgroundColor,
   Color? selectedMonthTextColor,
   Color? unselectedMonthTextColor,
@@ -97,6 +96,8 @@ Future<DateTime?> showMonthPicker({
   double? arrowSize,
   String? yearLocaleString,
   String? monthLocaleString,
+  TextStyle? headerTextStyle,
+  TextStyle? contentTextStyle,
 }) async {
   assert(forceSelectedDate == dismissible || !forceSelectedDate,
       'forceSelectedDate can only be used with dismissible = true');
@@ -111,7 +112,6 @@ Future<DateTime?> showMonthPicker({
     yearStylePredicate: yearStylePredicate,
     capitalizeFirstLetter: capitalizeFirstLetter,
     headerColor: headerColor,
-    headerTextColor: headerTextColor,
     selectedMonthBackgroundColor: selectedMonthBackgroundColor,
     selectedMonthTextColor: selectedMonthTextColor,
     unselectedMonthTextColor: unselectedMonthTextColor,
@@ -132,6 +132,8 @@ Future<DateTime?> showMonthPicker({
     arrowSize: arrowSize,
     yearLocaleString: yearLocaleString,
     monthLocaleString: monthLocaleString,
+    headerTextStyle: headerTextStyle,
+    contentTextStyle: contentTextStyle,
   );
   final DateTime? dialogDate = await showDialog<DateTime>(
     context: context,
@@ -216,7 +218,8 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
               ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           PickerPager(
             selector: _selector,
@@ -243,14 +246,13 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
       data: widget.controller.theme
           .copyWith(dialogBackgroundColor: Colors.transparent),
       child: Dialog(
+        insetPadding: EdgeInsets.all(10),
         child: Builder(
           builder: (BuildContext context) {
             if (portrait) {
-              return IntrinsicWidth(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[header, content],
-                ),
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[header, content],
               );
             }
             return IntrinsicHeight(

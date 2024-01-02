@@ -68,7 +68,7 @@ class MonthButton extends StatelessWidget {
           : null,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(15.0),
+          Radius.circular(20.0),
         ),
       ),
     );
@@ -90,20 +90,22 @@ class MonthButton extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.all(controller.selectedMonthPadding),
-      child: TextButton(
-        onPressed: isEnabled
-            ? () => onMonthSelected(DateTime(date.year, date.month))
-            : null,
-        style: monthStyle,
-        child: Text(
-          controller.capitalizeFirstLetter
-              ? toBeginningOfSentenceCase(
-                  DateFormat.MMM(localeString).format(date))!
-              : DateFormat.MMM(localeString).format(date).toLowerCase(),
-          style: monthStyle.textStyle?.resolve({}),
-          textScaler: controller.textScaleFactor != null
-              ? TextScaler.linear(controller.textScaleFactor!)
+      child: FittedBox(
+        child: TextButton(
+          onPressed: isEnabled
+              ? () => onMonthSelected(DateTime(date.year, date.month))
               : null,
+          style: monthStyle,
+          child: Text(
+            controller.capitalizeFirstLetter
+                ? toBeginningOfSentenceCase(
+                    DateFormat.MMM(localeString).format(date))!
+                : DateFormat.MMM(localeString).format(date).toLowerCase(),
+            style: monthStyle.textStyle?.resolve({}),
+            textScaler: controller.textScaleFactor != null
+                ? TextScaler.linear(controller.textScaleFactor!)
+                : null,
+          ),
         ),
       ),
     );

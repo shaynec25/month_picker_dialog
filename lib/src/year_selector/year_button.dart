@@ -63,7 +63,7 @@ class YearButton extends StatelessWidget {
           year == controller.selectedDate.year ? backgroundColor : null,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(15.0),
+          Radius.circular(20.0),
         ),
       ),
     );
@@ -90,15 +90,17 @@ class YearButton extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.all(controller.selectedMonthPadding),
-      child: TextButton(
-        onPressed: isEnabled ? () => onYearSelected(year) : null,
-        style: yearStyle,
-        child: Text(
-          DateFormat.y(localeString).format(DateTime(year)),
-          style: yearStyle.textStyle?.resolve({}),
-          textScaler: controller.textScaleFactor != null
-              ? TextScaler.linear(controller.textScaleFactor!)
-              : null,
+      child: FittedBox(
+        child: TextButton(
+          onPressed: isEnabled ? () => onYearSelected(year) : null,
+          style: yearStyle,
+          child: Text(
+            DateFormat.y(localeString).format(DateTime(year)),
+            style: yearStyle.textStyle?.resolve({}),
+            textScaler: controller.textScaleFactor != null
+                ? TextScaler.linear(controller.textScaleFactor!)
+                : null,
+          ),
         ),
       ),
     );

@@ -19,25 +19,31 @@ class MonthYearGridBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.all(8.0),
-      crossAxisCount: 4,
-      children: List<Widget>.generate(
-        12,
-        (final int index) => MonthButton(
-          theme: controller.theme,
-          date: DateTime(
-              controller.localFirstDate != null
-                  ? controller.localFirstDate!.year + page
-                  : page,
-              index + 1),
-          localeString: localeString ??
-              getLocale(context, selectedLocale: controller.locale),
-          onMonthSelected: onMonthSelected,
-          controller: controller,
-        ),
-      ).toList(growable: false),
+    return Center(
+      child: GridView.count(
+        shrinkWrap: true,
+        childAspectRatio: 2,
+        // mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        physics: const NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        crossAxisCount: 3,
+        children: List<Widget>.generate(
+          12,
+          (final int index) => MonthButton(
+            theme: controller.theme,
+            date: DateTime(
+                controller.localFirstDate != null
+                    ? controller.localFirstDate!.year + page
+                    : page,
+                index + 1),
+            localeString: localeString ??
+                getLocale(context, selectedLocale: controller.locale),
+            onMonthSelected: onMonthSelected,
+            controller: controller,
+          ),
+        ).toList(growable: false),
+      ),
     );
   }
 }

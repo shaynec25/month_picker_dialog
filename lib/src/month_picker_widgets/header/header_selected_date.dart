@@ -24,10 +24,11 @@ class HeaderSelectedDate extends StatelessWidget {
       textScaler: controller.textScaleFactor != null
           ? TextScaler.linear(controller.textScaleFactor!)
           : null,
-      style: controller.headerTextColor == null
-          ? theme.primaryTextTheme.titleMedium
-          : theme.primaryTextTheme.titleMedium!
-              .copyWith(color: controller.headerTextColor),
+      style: controller.headerTextStyle ??
+          //  controller.headerTextColor == null
+          // ? theme.primaryTextTheme.titleMedium
+          theme.primaryTextTheme.titleMedium,
+      // .copyWith(color: controller.headerTextColor),
     );
   }
 }

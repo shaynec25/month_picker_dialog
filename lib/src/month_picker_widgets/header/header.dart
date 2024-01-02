@@ -36,7 +36,7 @@ class PickerHeader extends StatelessWidget {
               ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24.0),
         child: controller.hideHeaderRow
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
