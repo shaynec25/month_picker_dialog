@@ -10,10 +10,12 @@ class MonthSelector extends StatefulWidget {
     super.key,
     required this.onMonthSelected,
     required this.controller,
+    this.localeString,
   });
 
   final ValueChanged<DateTime> onMonthSelected;
   final MonthpickerController controller;
+  final String? localeString;
 
   @override
   State<StatefulWidget> createState() => MonthSelectorState();
@@ -31,6 +33,7 @@ class MonthSelectorState extends State<MonthSelector> {
       itemCount: widget.controller.monthPageCount,
       itemBuilder: (final BuildContext context, final int page) =>
           MonthYearGridBuilder(
+        localeString: widget.localeString,
         onMonthSelected: widget.onMonthSelected,
         controller: widget.controller,
         page: page,

@@ -35,6 +35,8 @@ class MonthpickerController {
     required this.useMaterial3,
     this.textScaleFactor,
     this.arrowSize,
+    this.yearLocaleString,
+    this.monthLocaleString,
   });
 
   //User defined variables
@@ -59,6 +61,7 @@ class MonthpickerController {
   final double? customHeight, customWidth, textScaleFactor, arrowSize;
   final double roundedCornersRadius, selectedMonthPadding;
   final int animationMilliseconds;
+  final String? yearLocaleString, monthLocaleString;
 
   //local variables
   final GlobalKey<YearSelectorState> yearSelectorState = GlobalKey();

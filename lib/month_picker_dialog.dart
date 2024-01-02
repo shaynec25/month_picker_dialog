@@ -62,6 +62,10 @@ import 'src/year_selector/year_selector.dart';
 ///
 /// [arrowSize] lets you control the size of the header arrows.
 ///
+/// [yearLocaleString] lets you format year by locale.
+///
+/// [monthLocaleString] lets you format month by locale.
+///
 Future<DateTime?> showMonthPicker({
   required BuildContext context,
   DateTime? initialDate,
@@ -91,6 +95,8 @@ Future<DateTime?> showMonthPicker({
   bool hideHeaderRow = false,
   double? textScaleFactor,
   double? arrowSize,
+  String? yearLocaleString,
+  String? monthLocaleString,
 }) async {
   assert(forceSelectedDate == dismissible || !forceSelectedDate,
       'forceSelectedDate can only be used with dismissible = true');
@@ -124,6 +130,8 @@ Future<DateTime?> showMonthPicker({
     useMaterial3: theme.useMaterial3,
     textScaleFactor: textScaleFactor,
     arrowSize: arrowSize,
+    yearLocaleString: yearLocaleString,
+    monthLocaleString: monthLocaleString,
   );
   final DateTime? dialogDate = await showDialog<DateTime>(
     context: context,
@@ -167,11 +175,13 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
             key: widget.controller.yearSelectorState,
             onYearSelected: _onYearSelected,
             controller: widget.controller,
+            yearLocaleString: widget.controller.yearLocaleString,
           )
         : MonthSelector(
             key: widget.controller.monthSelectorState,
             onMonthSelected: _onMonthSelected,
             controller: widget.controller,
+            localeString: widget.controller.monthLocaleString,
           );
   }
 
@@ -261,6 +271,7 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
           key: widget.controller.yearSelectorState,
           onYearSelected: _onYearSelected,
           controller: widget.controller,
+          yearLocaleString: widget.controller.yearLocaleString,
         ),
       );
 
@@ -272,6 +283,7 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
           key: widget.controller.monthSelectorState,
           onMonthSelected: _onMonthSelected,
           controller: widget.controller,
+          localeString: widget.controller.monthLocaleString,
         );
       },
     );
@@ -284,6 +296,7 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
             key: widget.controller.monthSelectorState,
             onMonthSelected: _onMonthSelected,
             controller: widget.controller,
+            localeString: widget.controller.monthLocaleString,
           );
         },
       );

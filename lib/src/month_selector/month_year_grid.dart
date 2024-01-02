@@ -10,10 +10,12 @@ class MonthYearGridBuilder extends StatelessWidget {
     required this.onMonthSelected,
     required this.controller,
     required this.page,
+    this.localeString,
   });
   final ValueChanged<DateTime> onMonthSelected;
   final MonthpickerController controller;
   final int page;
+  final String? localeString;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,8 @@ class MonthYearGridBuilder extends StatelessWidget {
                   ? controller.localFirstDate!.year + page
                   : page,
               index + 1),
-          localeString: getLocale(context, selectedLocale: controller.locale),
+          localeString: localeString ??
+              getLocale(context, selectedLocale: controller.locale),
           onMonthSelected: onMonthSelected,
           controller: controller,
         ),

@@ -10,10 +10,12 @@ class YearSelector extends StatefulWidget {
     super.key,
     required this.controller,
     required this.onYearSelected,
+    this.yearLocaleString,
   });
 
   final MonthpickerController controller;
   final ValueChanged<int> onYearSelected;
+  final String? yearLocaleString;
 
   @override
   State<StatefulWidget> createState() => YearSelectorState();
@@ -34,6 +36,7 @@ class YearSelectorState extends State<YearSelector> {
         page: page,
         onYearSelected: widget.onYearSelected,
         controller: widget.controller,
+        yearLocaleString: widget.yearLocaleString,
       ),
     );
   }

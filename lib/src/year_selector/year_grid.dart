@@ -9,14 +9,16 @@ class YearGrid extends StatelessWidget {
     required this.page,
     required this.onYearSelected,
     required this.controller,
+    this.yearLocaleString,
   });
   final int page;
   final ValueChanged<int> onYearSelected;
   final MonthpickerController controller;
+  final String? yearLocaleString;
 
   @override
   Widget build(BuildContext context) {
-    final String localeString =
+    final String localeString = yearLocaleString ??
         getLocale(context, selectedLocale: controller.locale);
     return GridView.count(
       physics: const NeverScrollableScrollPhysics(),

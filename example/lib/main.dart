@@ -45,19 +45,19 @@ class _MyAppState extends State<MyApp> {
         Locale('es'),
         Locale('it'),
       ],
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.indigo)
-            .copyWith(secondary: Colors.pinkAccent),
-        //Changing the global dialog border
-        dialogTheme: DialogTheme(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(20),
-            ),
-            side: BorderSide(color: Colors.blue),
-          ),
-        ),
-      ),
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.indigo)
+      //       .copyWith(secondary: Colors.pinkAccent),
+      //Changing the global dialog border
+      // dialogTheme: DialogTheme(
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.all(
+      //       Radius.circular(20),
+      //     ),
+      //     side: BorderSide(color: Colors.blue),
+      //   ),
+      // ),
+      // ),
       // theme: CupertinoThemeData(primaryColor: Colors.indigo),
       home: Scaffold(
         appBar: AppBar(
@@ -74,69 +74,68 @@ class _MyAppState extends State<MyApp> {
           builder: (BuildContext context) => FloatingActionButton(
             onPressed: () {
               showMonthPicker(
-                context: context,
-                firstDate: DateTime(DateTime.now().year - 5, 5),
-                lastDate: DateTime(DateTime.now().year + 8, 9),
-                initialDate: selectedDate ?? widget.initialDate,
-                locale: const Locale('en'),
-                //show only even months
-                selectableMonthPredicate: (DateTime val) => val.month.isEven,
-                monthStylePredicate: (DateTime val) {
-                  if (val.month == 4) {
-                    return TextButton.styleFrom(
-                      backgroundColor: Colors.yellow[700],
-                      textStyle: const TextStyle(
-                        color: Colors.pink,
-                        fontWeight: FontWeight.bold,
+                      context: context,
+                      firstDate: DateTime(DateTime.now().year - 5, 5),
+                      lastDate: DateTime(DateTime.now().year + 8, 9),
+                      initialDate: selectedDate ?? widget.initialDate,
+                      locale: const Locale('zh'),
+                      yearLocaleString: 'en',
+                      // monthStylePredicate: (DateTime val) {
+                      //   if (val.month == 4) {
+                      //     return TextButton.styleFrom(
+                      //       backgroundColor: Colors.yellow[700],
+                      //       textStyle: const TextStyle(
+                      //         color: Colors.pink,
+                      //         fontWeight: FontWeight.bold,
+                      //       ),
+                      //     );
+                      //   }
+                      //   return null;
+                      // },
+                      // yearStylePredicate: (int val) {
+                      //   if (val == 2022) {
+                      //     return TextButton.styleFrom(
+                      //       backgroundColor: Colors.yellow[700],
+                      //       textStyle: const TextStyle(
+                      //         color: Colors.pink,
+                      //         fontWeight: FontWeight.bold,
+                      //       ),
+                      //     );
+                      //   }
+                      //   return null;
+                      // },
+                      // headerColor: Colors.amber[900],
+                      // headerTextColor: Colors.black,
+                      selectedMonthBackgroundColor: Colors.amber[900],
+                      selectedMonthTextColor: Colors.white,
+                      unselectedMonthTextColor: Colors.black,
+                      confirmWidget: Text(
+                        'This one!',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber[900],
+                        ),
                       ),
-                    );
-                  }
-                  return null;
-                },
-                yearStylePredicate: (int val) {
-                  if (val == 2022) {
-                    return TextButton.styleFrom(
-                      backgroundColor: Colors.yellow[700],
-                      textStyle: const TextStyle(
-                        color: Colors.pink,
-                        fontWeight: FontWeight.bold,
+                      cancelWidget: Text(
+                        'Cancel',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber[900],
+                        ),
                       ),
-                    );
-                  }
-                  return null;
-                },
-                headerColor: Colors.amber[900],
-                headerTextColor: Colors.black,
-                selectedMonthBackgroundColor: Colors.amber[900],
-                selectedMonthTextColor: Colors.white,
-                unselectedMonthTextColor: Colors.green,
-                confirmWidget: Text(
-                  'This one!',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.amber[900],
-                  ),
-                ),
-                cancelWidget: Text(
-                  'Cancel',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.amber[900],
-                  ),
-                ),
-                roundedCornersRadius: 20,
-                yearFirst: true,
-                backgroundColor: Colors.yellow[100],
-                //forceSelectedDate: true,
-                //dismissible: true,
-                // capitalizeFirstLetter: true,
-                // customHeight: 500,
-                // customWidth: 500,
-                // dismissible: true,
-                // forceSelectedDate: true,
-                // animationMilliseconds: 300
-                //hideHeaderRow: true
-              ).then((DateTime? date) {
+                      roundedCornersRadius: 20,
+                      yearFirst: true,
+                      // backgroundColor: Colors.yellow[100],
+                      //forceSelectedDate: true,
+                      dismissible: true,
+                      // capitalizeFirstLetter: true,
+                      // customHeight: 500,
+                      // customWidth: 500,
+                      // dismissible: true,
+                      // forceSelectedDate: true,
+                      // animationMilliseconds: 300
+                      hideHeaderRow: true)
+                  .then((DateTime? date) {
                 if (date != null) {
                   setState(() {
                     selectedDate = date;
