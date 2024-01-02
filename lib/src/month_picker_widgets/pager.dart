@@ -20,7 +20,11 @@ class PickerPager extends StatelessWidget {
         data: theme.copyWith(
           buttonTheme: const ButtonThemeData(
             padding: EdgeInsets.all(2.0),
-            shape: CircleBorder(),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(15.0),
+              ),
+            ),
             minWidth: 4.0,
           ),
         ),

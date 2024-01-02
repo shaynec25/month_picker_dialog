@@ -66,7 +66,11 @@ class MonthButton extends StatelessWidget {
               date.year == controller.selectedDate.year
           ? backgroundColor
           : null,
-      shape: const CircleBorder(),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(15.0),
+        ),
+      ),
     );
     return monthStyle;
   }
